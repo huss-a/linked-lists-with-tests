@@ -14,7 +14,7 @@ describe("#insertAtHead", () => {
 
 describe("#getByIndex", () => {
   describe("with index less than 0", () => {
-    test("it returns null", () => {
+    it("it returns null", () => {
       const ll = LinkedList.fromVals(10, 20);
 
       expect(ll.getByIndex(-1)).toBeNull();
@@ -22,7 +22,7 @@ describe("#getByIndex", () => {
   });
 
   describe("with index greater than list length", () => {
-    test("it returns null", () => {
+    it("it returns null", () => {
       const ll = LinkedList.fromVals(10, 20);
 
       expect(ll.getByIndex(5)).toBeNull();
@@ -30,7 +30,7 @@ describe("#getByIndex", () => {
   });
 
   describe("with index 0", () => {
-    test("it returns the head", () => {
+    it("it returns the head", () => {
       const ll = LinkedList.fromVals(10, 20);
 
       expect(ll.getByIndex(0).value).toBe(10);
@@ -38,7 +38,7 @@ describe("#getByIndex", () => {
   });
 
   describe("with index in the middle", () => {
-    test("it returns the element at that index", () => {
+    it("it returns the element at that index", () => {
       const ll = LinkedList.fromVals(10, 20, 30, 40);
 
       expect(ll.getByIndex(2).value).toBe(30);
@@ -48,7 +48,7 @@ describe("#getByIndex", () => {
 
 describe("#insertAtIndex", () => {
   describe("index less than 0", () => {
-    test("doesn't insert anything", () => {
+    it("doesn't insert anything", () => {
       const ll = LinkedList.fromVals(90, 81);
       ll.insertAtIndex(-1, 65);
       expect(ll.head.value).toBe(90);
@@ -57,7 +57,7 @@ describe("#insertAtIndex", () => {
   });
 
   describe("greater than length of array", () => {
-    test("doesn't insert anything", () => {
+    it("doesn't insert anything", () => {
       const ll = LinkedList.fromVals(90, 81);
       ll.insertAtIndex(7, 65);
       expect(ll.head.value).toBe(90);
@@ -66,7 +66,7 @@ describe("#insertAtIndex", () => {
   });
 
   describe("index of 0", () => {
-    test("update head", () => {
+    it("update head", () => {
       const ll = LinkedList.fromVals(89, 90);
       ll.insertAtIndex(0, 67);
       expect(ll.head.value).toBe(67);
@@ -75,7 +75,7 @@ describe("#insertAtIndex", () => {
     });
   });
   describe("with index in the middle", () => {
-    test("it inserts the element at that index", () => {
+    it("it inserts the element at that index", () => {
       const ll = LinkedList.fromVals(10, 20, 30, 40);
       ll.insertAtIndex(2, 50);
       const node = ll.getByIndex(2);
@@ -87,7 +87,7 @@ describe("#insertAtIndex", () => {
 });
 
 describe("#removeHead", () => {
-  test("removes head", () => {
+  it("removes head", () => {
     const ll = LinkedList.fromVals(89, 70, 80);
     ll.removeHead();
     expect(ll.head.value).toBe(70);
@@ -97,7 +97,7 @@ describe("#removeHead", () => {
 
 describe("#removeAtIndex", () => {
   describe("index less than 0", () => {
-    test("doesn't do anything", () => {
+    it("doesn't do anything", () => {
       const ll = LinkedList.fromVals(10, 20, 40);
       ll.removeAtIndex(-1);
       expect(ll.head.value).toBe(10);
@@ -106,7 +106,7 @@ describe("#removeAtIndex", () => {
   });
 
   describe("index greater than list length", () => {
-    test("doesn't do anything", () => {
+    it("doesn't do anything", () => {
       const ll = LinkedList.fromVals(10, 20, 40);
       ll.removeAtIndex(5);
       expect(ll.head.value).toBe(10);
@@ -115,7 +115,7 @@ describe("#removeAtIndex", () => {
   });
 
   describe("index of 0", () => {
-    test("updates head", () => {
+    it("updates head", () => {
       const ll = LinkedList.fromVals(10, 20, 40);
       ll.removeAtIndex(0);
       expect(ll.head.value).toBe(20);
@@ -124,12 +124,21 @@ describe("#removeAtIndex", () => {
   });
 
   describe("middle index", () => {
-    test("removed element at index", () => {
+    it("removed element at index", () => {
       const ll = LinkedList.fromVals(10, 20, 40);
       ll.removeAtIndex(1);
       const node = ll.getByIndex(1);
       expect(node.value).toBe(40);
       expect(ll.length).toBe(2);
     });
+  });
+});
+
+describe("#reverse", () => {
+  it("reverses the list", () => {
+    const ll = LinkedList.fromVals(1, 2, 3, 4);
+    ll.reverse();
+    expect(ll.head.value).toBe(4);
+    expect(ll.getByIndex(1).value).toBe(3);
   });
 });

@@ -1,4 +1,6 @@
 node_modules
+app.js
+app.py
 coverage
 __pycache__
 .pytest_cache

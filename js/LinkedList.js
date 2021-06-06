@@ -60,6 +60,26 @@ class LinkedList {
     return this;
   }
 
+  // reverse challenge
+  reverse() {
+    // a -> b -> c -> d
+    // d -> c -> b -> a
+    // great explanation of the algorithm: https://youtu.be/O0By4Zq0OFc?t=103
+    let curr = this.head;
+    let tmp_next,
+      prev = null;
+
+    while (curr) {
+      tmp_next = curr.next; //saving this variable
+      curr.next = prev;
+      prev = curr;
+      curr = tmp_next;
+    }
+
+    this.head = prev; // prev will end up being the new head
+    return this;
+  }
+
   // visualization of list
   visualize() {
     let output = "";
