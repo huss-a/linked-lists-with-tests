@@ -61,7 +61,7 @@ class LinkedList {
   }
 
   // reverse challenge
-  reverse() {
+  reverse(reverseClass) {
     // a -> b -> c -> d
     // d -> c -> b -> a
     // great explanation of the algorithm: https://youtu.be/O0By4Zq0OFc?t=103
@@ -75,9 +75,11 @@ class LinkedList {
       prev = curr;
       curr = tmp_next;
     }
-
-    this.head = prev; // prev will end up being the new head
-    return this;
+    if (reverseClass) {
+      this.head = prev;
+      return this.head;
+    }
+    return prev; //new head
   }
 
   // visualization of list

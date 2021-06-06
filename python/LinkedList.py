@@ -11,11 +11,9 @@ class LinkedList:
             return self.head
 
         current = self.head
-
+        print(f"in get by index,value of current is {current.value}")
         for i in range(index):
             current = current.next
-            if(i > index):
-                break
 
         return current
 
@@ -52,7 +50,7 @@ class LinkedList:
         self.length -= 1
         return self
 
-    def reverse(self):
+    def reverse(self, reverse_class = False):
         tmp_next, prev = None, None
         curr = self.head
         while(curr):
@@ -60,8 +58,10 @@ class LinkedList:
             curr.next = prev
             prev = curr
             curr = tmp_next
-        self.head = prev
-        return self
+        if(reverse_class):
+            self.head = prev
+            return self.head
+        return prev
 
     def __str__(self) -> str:
         current = self.head
@@ -84,6 +84,6 @@ def from_vals(values: list):
 LinkedList.from_vals = from_vals
 
 class LinkedListNode:
-    def __init__(self, value, next = None) -> None:
+    def __init__(self, value, next) -> None:
         self.value = value
         self.next = next

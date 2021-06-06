@@ -41,6 +41,12 @@ class Test:
     def test_reverse(self):
         ll = LinkedList.from_vals([2,6,7,9])
         assert ll.head.value == 2
-        ll.reverse()
+        ll.head = ll.reverse()
+        assert ll.head.value == 9
+        assert ll.get_by_index(1).value == 7
+        
+    def test_reverse1(self):
+        ll = LinkedList.from_vals([2,6,7,9])
+        ll.reverse(True)
         assert ll.head.value == 9
         assert ll.get_by_index(1).value == 7

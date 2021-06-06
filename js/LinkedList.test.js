@@ -135,10 +135,21 @@ describe("#removeAtIndex", () => {
 });
 
 describe("#reverse", () => {
-  it("reverses the list", () => {
-    const ll = LinkedList.fromVals(1, 2, 3, 4);
-    ll.reverse();
-    expect(ll.head.value).toBe(4);
-    expect(ll.getByIndex(1).value).toBe(3);
+  describe("with reverseClass false", () => {
+    it("returns reverse version of list", () => {
+      let ll = LinkedList.fromVals(1, 2, 3, 4);
+      ll.head = ll.reverse();
+      expect(ll.head.value).toBe(4);
+      expect(ll.getByIndex(1).value).toBe(3);
+    });
+  });
+
+  describe("with reverseClass true", () => {
+    it("reverses the list (mutates it)", () => {
+      let ll = LinkedList.fromVals(1, 2, 3, 4);
+      ll.reverse(true);
+      expect(ll.head.value).toBe(4);
+      expect(ll.getByIndex(1).value).toBe(3);
+    });
   });
 });
