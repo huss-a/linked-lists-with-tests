@@ -52,6 +52,17 @@ class LinkedList:
         self.length -= 1
         return self
 
+    def reverse(self):
+        tmp_next, prev = None, None
+        curr = self.head
+        while(curr):
+            tmp_next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = tmp_next
+        self.head = prev
+        return self
+
     def __str__(self) -> str:
         current = self.head
         output = ""

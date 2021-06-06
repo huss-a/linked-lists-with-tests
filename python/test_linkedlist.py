@@ -37,3 +37,10 @@ class Test:
         ll.remove_at_index(2)
         assert ll.get_by_index(2) == None
         assert ll.length == 2
+
+    def test_reverse(self):
+        ll = LinkedList.from_vals([2,6,7,9])
+        assert ll.head.value == 2
+        ll.reverse()
+        assert ll.head.value == 9
+        assert ll.get_by_index(1).value == 7
