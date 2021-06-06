@@ -4,13 +4,7 @@ class LinkedList {
     this.length = 0;
   }
 
-  insertAtHead(data) {
-    const newNode = new LinkedListNode(data, this.head);
-
-    this.head = newNode;
-    this.length++;
-  }
-
+  // get methods
   getByIndex(index) {
     if (index === 0) return this.head;
     if (index >= this.length || index < 0) return null;
@@ -24,9 +18,18 @@ class LinkedList {
     return current;
   }
 
+  // insertion methods
+  insertAtHead(data) {
+    const newNode = new LinkedListNode(data, this.head);
+
+    this.head = newNode;
+    this.length++;
+    return this;
+  }
+
   insertAtIndex(index, value) {
     if (index === 0) return this.insertAtHead(value);
-    if (index < 0 || index > this.length) return;
+    if (index < 0 || index > this.length) return this;
 
     const prev = this.getByIndex(index - 1);
 
@@ -34,11 +37,14 @@ class LinkedList {
 
     prev.next = new LinkedListNode(value, prev.next);
     this.length++;
+    return this;
   }
 
+  // remove methods
   removeHead() {
     this.head = this.head.next;
     this.length--;
+    return this;
   }
 
   removeAtIndex(index) {
@@ -51,8 +57,10 @@ class LinkedList {
 
     prev.next = prev.next.next;
     this.length--;
+    return this;
   }
 
+  // visualization of list
   visualize() {
     let output = "";
     let current = this.head;
@@ -65,7 +73,6 @@ class LinkedList {
 
     return console.log(`${output}null`);
   }
-
 }
 
 class LinkedListNode {
